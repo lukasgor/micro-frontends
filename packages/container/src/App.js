@@ -1,15 +1,24 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import {
+  StylesProvider,
+  generateClassName,
+  createGenerateClassName,
+} from '@material-ui/core/styles';
 import MarketingApp from './components/MarketingApp';
 import Header from './components/Header';
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'co',
+});
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <StylesProvider generateClassName={generateClassName}>
         <Header />
         <MarketingApp />
-      </div>
+      </StylesProvider>
     </BrowserRouter>
   );
 };
